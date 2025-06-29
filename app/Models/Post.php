@@ -19,9 +19,11 @@ class Post extends Model
         "publication_date",
         "last_modified_date",
         "status",
-        "feature_image_url",
+        "featured_image_url",
         "views_count",
     ];
+
+    public $timestamps = false;
 
     public function categories(): BelongsToMany
     {

@@ -16,6 +16,8 @@ class Comment extends Model
         "is_hidden",
     ];
 
+    public $timestamps = false;
+
     public function post(): BelongsTo
     {
         return $this->belongsTo(Post::class, "post_id");

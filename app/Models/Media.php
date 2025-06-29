@@ -16,6 +16,8 @@ class Media extends Model
         "description"
     ];
 
+    public $timestamps = false;
+
     public function post(): BelongsTo
     {
         return $this->belongsTo(Post::class, "post_id");
