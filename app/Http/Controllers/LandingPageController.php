@@ -15,7 +15,21 @@ class LandingPageController extends Controller
         $featuredPosts = Post::where('featured_post', 1)
             ->orderBy('publication_date', 'desc')
             ->first();
-        //dd($featuredPosts->get());
-        return view('welcome', ['featuredPosts' => $featuredPosts]);
+        $recentPosts = Post::where('publication_date', '!=', null)
+            ->orderBy('publication_date', 'desc')
+            ->get();
+        $mostPopular = Post::where('publication_date', '!=', null)
+            ->orderBy('views_count', 'desc')
+            ->take(10)  //top 10
+            ->get();
+        // dd($mostPopular->first()->user()->get());
+        return view(
+            'welcome',
+            [
+                'featuredPosts' => $featuredPosts,
+                'recentPosts' => $recentPosts,
+                'mostPopular' => $mostPopular
+            ]
+        );
     }
 }
