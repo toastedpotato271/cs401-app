@@ -23,11 +23,12 @@ class PostFactory extends Factory
             "title" => $title,
             "content" => fake()->sentences(rand(5, 10), true),
             "slug" => Str::slug($title),
-            "publication_date" => fake()->optional()->dateTime(),
+            "publication_date" => null,
             "last_modified_date" => fake()->optional()->dateTime(),
             "status" => $status[array_rand($status)],
             "featured_image_url" => "https://picsum.photos/600/400",
-            "views_count" => fake()->numberBetween(1, 50000),
+            "views_count" => 0,
+            "featured_post" => false
         ];
     }
 }

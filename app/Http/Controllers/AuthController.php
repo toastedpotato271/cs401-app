@@ -2,15 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 
-class LoginController extends Controller
+class AuthController extends Controller
 {
     public function showLoginForm()
     {
         return view('auth.login');
+    }
+
+    public function showRegisterForm()
+    {
+        return view('auth.register');
     }
 
     public function authenticate(Request $request)
@@ -30,7 +38,7 @@ class LoginController extends Controller
             $request->session()->regenerate();
 
             // 4. Redirect the user to their intended destination or a default dashboard
-            return redirect()->intended('/dashboard')->with('success', 'You have been logged in!');
+            return redirect()->intended('/')->with('success', 'You have been logged in!');
         }
 
         // 5. If authentication fails, throw a validation exception
@@ -52,6 +60,29 @@ class LoginController extends Controller
         $request->session()->regenerateToken();
 
         // Redirect to the login page or home page with a success message
-        return redirect('/login')->with('success', 'You have been logged out.');
+        return redirect('/')->with('success', 'You have been logged out.');
+    }
+
+    public function register(Request $request)
+    {
+        $validatedData = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+
+        try {
+            $user = User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+            ]);
+        } catch (Exception $ex) {
+            throw $ex;
+        }
+
+        Auth::login($user);
+
+        return redirect('/'); // Redirect to the home/welcome page after successful registration
     }
 }

@@ -9,8 +9,13 @@ class LandingPageController extends Controller
 {
     public function index()
     {
-        $featuredPosts = Post::all();   //will get all for the meantime
-        $recentPosts = Post::all();
-        return view('welcome', ['featuredPosts' => $featuredPosts, 'recentPosts' => $recentPosts]);
+        //$featuredPosts = Post::all();   //will get all for the meantime
+        //$recentPosts = Post::all();
+        //return view('welcome', ['featuredPosts' => $featuredPosts, 'recentPosts' => $recentPosts]);
+        $featuredPosts = Post::where('featured_post', 1)
+            ->orderBy('publication_date', 'desc')
+            ->first();
+        //dd($featuredPosts->get());
+        return view('welcome', ['featuredPosts' => $featuredPosts]);
     }
 }
