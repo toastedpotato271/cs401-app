@@ -1,8 +1,8 @@
 <footer class="bg-[#24263b] py-10 mt-12"> {{-- Adjust background color --}}
-    <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8 text-white">
+    <div class="container mx-auto px-4 flex flex-col md:flex-row gap-8 text-white">
         <div class="col-span-1 md:col-span-2">
             <div class="flex items-center mb-4">
-                <img src="https://img.icons8.com/color/48/000000/cat.png" alt="Lamablog Logo" class="w-12 h-12 mr-3" />
+                <img src="{{ asset('logo.png') }}" alt="Logo" class="w-12 h-12 mr-3" />
                 <span class="text-3xl font-bold">Game Ako Chronicles</span>
             </div>
             <p class="text-gray-300 text-sm mb-4">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Enim

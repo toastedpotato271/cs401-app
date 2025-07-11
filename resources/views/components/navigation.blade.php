@@ -1,6 +1,7 @@
 <nav class="bg-[#1a1a2e] p-4 shadow-md"> {{-- Adjust background color --}}
     <div class="container mx-auto flex justify-between items-center">
-        <div class="text-white text-2xl font-bold"><a href={{route('welcome')}}>Game Ako Chronicles</a></div>
+        <div class="text-white text-2xl font-bold flex items-center"><img src="{{ asset('logo.png') }}" alt="Logo"
+                class="h-8 mr-2"><a href={{route('welcome')}}>Game Ako Chronicles</a></div>
         <div class="flex items-center space-x-4">
             <a href="{{route('welcome')}}" class="text-white hover:text-[#e94560]">Home</a>
 
