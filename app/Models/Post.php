@@ -21,6 +21,7 @@ class Post extends Model
         "status",
         "featured_image_url",
         "views_count",
+        "featured_post", 
     ];
 
     public $timestamps = false;

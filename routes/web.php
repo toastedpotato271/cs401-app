@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Route;
 // Route::middleware('guest')->group(function () {
 
 // });
-Route::get('/', [LandingPageController::class, 'index'])->name('welcome');
+Route::get('/', [LandingPageController::class, 'index'])->name('welcome'); // <--- Currently looking into this
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'authenticate']);
 Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');

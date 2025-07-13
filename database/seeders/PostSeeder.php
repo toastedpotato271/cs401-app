@@ -17,7 +17,7 @@ class PostSeeder extends Seeder
         $users = User::all();
         $categories = Category::all();
 
-        Post::factory(env('MAX_POST_SEED'))
+        Post::factory(20)
             ->make()
             ->each(function ($post) use ($users, $categories) {
                 $user = $users->random();

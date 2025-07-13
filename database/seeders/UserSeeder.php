@@ -15,7 +15,7 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         // Create users first
-        $users = User::factory(env('MAX_USER_SEED'))->create();
+        $users = User::factory(20)->create();
 
         // Get the roles
         $adminRole = Role::where('role_name', 'A')->first();
